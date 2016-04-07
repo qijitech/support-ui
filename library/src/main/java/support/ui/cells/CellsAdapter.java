@@ -40,7 +40,13 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
     CellViewHolder cellViewHolder = null;
     switch (viewType) {
       case CellModel.VIEW_TYPE_EMPTY: {
-        cellViewHolder = new CellViewHolder(new EmptyCell(context));
+        cellViewHolder = new CellViewHolder(new EmptyCell(context)) {
+          @Override protected void bindTo(CellModel model) {
+            if (model.cellHeight > 0) {
+              ((EmptyCell)itemView).setHeight(model.cellHeight);
+            }
+          }
+        };
         break;
       }
       case CellModel.VIEW_TYPE_HEADER: {
@@ -54,7 +60,13 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
         break;
       }
       case CellModel.VIEW_TYPE_SHADOW: {
-        cellViewHolder = new CellViewHolder(new ShadowSectionCell(context));
+        cellViewHolder = new CellViewHolder(new ShadowSectionCell(context)) {
+          @Override protected void bindTo(CellModel model) {
+            if (model.cellHeight > 0) {
+              ((ShadowSectionCell)itemView).setSize(model.cellHeight);
+            }
+          }
+        };
         break;
       }
       case CellModel.VIEW_TYPE_TEXT:{
@@ -66,6 +78,35 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
         };
         break;
       }
+      case CellModel.VIEW_TYPE_SETTINGS:{
+        cellViewHolder = new CellViewHolder(new TextSettingsCell(context)) {
+          @Override protected void bindTo(CellModel model) {
+            TextSettingsCell cell = (TextSettingsCell) itemView;
+            cell.bindView(model.text, model.drawable, model.detail, model.needDivider);
+          }
+        };
+        break;
+      }
+      case CellModel.VIEW_TYPE_DETAIL_SETTINGS:{
+        cellViewHolder = new CellViewHolder(new TextDetailSettingsCell(context)) {
+          @Override protected void bindTo(CellModel model) {
+            TextDetailSettingsCell cell = (TextDetailSettingsCell) itemView;
+            cell.setTextAndValue(model.text, model.detail, model.needDivider);
+            cell.setMultilineDetail(model.multiline);
+          }
+        };
+        break;
+      }
+      case CellModel.VIEW_TYPE_CHECK:{
+        cellViewHolder = new CellViewHolder(new TextCheckCell(context)) {
+          @Override protected void bindTo(CellModel model) {
+            TextCheckCell cell = (TextCheckCell) itemView;
+            cell.bindView(model.text, model.detail, model.checked, model.needDivider);
+          }
+        };
+        break;
+      }
+
     }
 
     bindListeners(cellViewHolder);

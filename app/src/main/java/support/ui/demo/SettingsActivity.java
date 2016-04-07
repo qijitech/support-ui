@@ -1,6 +1,5 @@
 package support.ui.demo;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +18,7 @@ import support.ui.cells.CellsAdapter;
  * Created by YuGang Yang on 04 07, 2016.
  * Copyright 2015-2016 qiji.tech. All rights reserved.
  */
-public class CellsActivity extends AppCompatActivity implements EasyViewHolder.OnItemClickListener {
+public class SettingsActivity extends AppCompatActivity implements EasyViewHolder.OnItemClickListener {
 
   private CellsAdapter mAdapter;
   ArrayList<CellModel> items = new ArrayList<>();
@@ -44,26 +43,33 @@ public class CellsActivity extends AppCompatActivity implements EasyViewHolder.O
 
   private void buildData() {
     final Resources r = SupportApp.appResources();
-    items.add(CellModel.headCell("其他").build());
+    items.add(CellModel.shadowCell(60).build());
+    items.add(CellModel.headCell("Settings").build());
 
-    items.add(CellModel.textCell(r.getString(R.string.account_publish))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_publish))
+    items.add(CellModel.settingCell("Notification and Sounds")
+        .needDivider(true)
         .build());
-    items.add(CellModel.textCell(r.getString(R.string.account_classes))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_class))
+    items.add(CellModel.settingCell("Privacy and Security")
+        .needDivider(true)
         .build());
-
-    items.add(CellModel.textCell(r.getString(R.string.account_collection))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_collection))
-        .detail("3")
-        .build());
-    items.add(CellModel.textCell(r.getString(R.string.account_download))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_downloads))
+    items.add(CellModel.settingCell("Language")
+        .detail("English")
         .build());
 
-    items.add(CellModel.textCell(r.getString(R.string.account_settings))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_setting))
+    items.add(CellModel.shadowCell().build());
+    items.add(CellModel.headCell("Settings").build());
+    items.add(CellModel.checkCell("Enable Animations", true)
+        .detail("djsalfjlasjfldsja")
+        .needDivider(true)
         .build());
+    items.add(CellModel.detailSettingCell("When using mobile data", "Photo, Voice message, Music, GIF")
+        .needDivider(true)
+        .build());
+    items.add(CellModel.detailSettingCell("When roaming", "No mediaNo mediaNo mediaNo mediaNo mediaNo mediaNo mediaNo mediaNo mediaNo mediaNo media")
+        .multiline(true)
+        .needDivider(true)
+        .build());
+
     mAdapter.addAll(items);
   }
 
@@ -73,6 +79,6 @@ public class CellsActivity extends AppCompatActivity implements EasyViewHolder.O
   }
 
   @Override public void onItemClick(int position, View view) {
-    startActivity(new Intent(this, SettingsActivity.class));
+
   }
 }

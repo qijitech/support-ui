@@ -13,14 +13,17 @@ public class CellModel {
   public static final int VIEW_TYPE_CHECK = 2;
   public static final int VIEW_TYPE_TEXT = 3;
   public static final int VIEW_TYPE_SHADOW = 4;
+  public static final int VIEW_TYPE_SETTINGS = 5;
+  public static final int VIEW_TYPE_DETAIL_SETTINGS = 6;
 
   public boolean enabled;
   public boolean checked;
-  public boolean divider;
-  public boolean accessory;
+  public boolean needDivider;
+  public boolean multiline;
 
   public int itemViewType;
   public int tag;
+  public int cellHeight;
 
   public Drawable drawable;
   public String text;
@@ -34,6 +37,26 @@ public class CellModel {
 
   public static CellModel createModel(int itemViewType) {
     return new CellModel(itemViewType);
+  }
+
+  public static CellModel.Builder emptyCell() {
+    return new CellModel.Builder(VIEW_TYPE_EMPTY);
+  }
+
+  public static CellModel.Builder emptyCell(int height) {
+    CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_EMPTY);
+    builder.cellHeight = height;
+    return builder;
+  }
+
+  public static CellModel.Builder shadowCell() {
+    return new CellModel.Builder(VIEW_TYPE_SHADOW);
+  }
+
+  public static CellModel.Builder shadowCell(int height) {
+    CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_SHADOW);
+    builder.cellHeight = height;
+    return builder;
   }
 
   public static CellModel.Builder headCell(String text) {
@@ -54,14 +77,38 @@ public class CellModel {
     return builder;
   }
 
+  public static CellModel.Builder checkCell(String text, boolean checked) {
+    CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_CHECK);
+    builder.text = text;
+    builder.checked = checked;
+    builder.enabled = true;
+    return builder;
+  }
+
+  public static CellModel.Builder settingCell(String text) {
+    CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_SETTINGS);
+    builder.text = text;
+    builder.enabled = true;
+    return builder;
+  }
+
+  public static CellModel.Builder detailSettingCell(String text, String detail) {
+    CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_DETAIL_SETTINGS);
+    builder.text = text;
+    builder.detail = detail;
+    builder.enabled = true;
+    return builder;
+  }
+
   public static class Builder {
     private boolean enabled;
     private boolean checked;
-    private boolean divider;
-    private boolean accessory;
+    private boolean needDivider;
+    private boolean multiline;
 
     private int itemViewType;
     private int tag;
+    private int cellHeight;
 
     private Drawable drawable;
     private String text;
@@ -77,9 +124,10 @@ public class CellModel {
       CellModel model = new CellModel(itemViewType);
       model.enabled = enabled;
       model.checked = checked;
-      model.divider = divider;
-      model.accessory = accessory;
+      model.needDivider = needDivider;
+      model.multiline = multiline;
       model.tag = tag;
+      model.cellHeight = cellHeight;
       model.drawable = drawable;
       model.text = text;
       model.subtitle = subtitle;
@@ -98,13 +146,13 @@ public class CellModel {
       return this;
     }
 
-    public Builder divider(boolean divider) {
-      this.divider = divider;
+    public Builder needDivider(boolean needDivider) {
+      this.needDivider = needDivider;
       return this;
     }
 
-    public Builder accessory(boolean accessory) {
-      this.accessory = accessory;
+    public Builder multiline(boolean multiline) {
+      this.multiline = multiline;
       return this;
     }
 
