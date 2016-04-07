@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">support-ui</string>
+  <string name="account_publish">我的发布</string>
+  <string name="account_collection">我的收藏</string>
+  <string name="account_download">本地缓存</string>
+  <string name="account_classes">班级管理</string>
+  <string name="account_settings">设置</string>
+</resources>
