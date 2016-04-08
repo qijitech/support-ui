@@ -17,7 +17,7 @@ public class DividerCell extends BaseCell {
     super(context);
     if (paint == null) {
       paint = new Paint();
-      paint.setColor(0xffd9d9d9);
+      paint.setColor(CellUtils.getDividerColor(context));
       paint.setStrokeWidth(1);
     }
   }

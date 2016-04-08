@@ -31,12 +31,12 @@ public class TextSettingsCell extends FrameLayout {
 
     if (paint == null) {
       paint = new Paint();
-      paint.setColor(0xffd9d9d9);
+      paint.setColor(CellUtils.getDividerColor(context));
       paint.setStrokeWidth(1);
     }
 
     textView = new TextView(context);
-    textView.setTextColor(0xff212121);
+    textView.setTextColor(CellUtils.getTextColor(context));
     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
     textView.setLines(1);
     textView.setMaxLines(1);
@@ -46,7 +46,7 @@ public class TextSettingsCell extends FrameLayout {
     addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 17, 0, 17, 0));
 
     valueTextView = new TextView(context);
-    valueTextView.setTextColor(0xff2f8cc9);
+    valueTextView.setTextColor(CellUtils.getValueColor(context));
     valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
     valueTextView.setLines(1);
     valueTextView.setMaxLines(1);

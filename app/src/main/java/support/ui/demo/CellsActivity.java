@@ -62,7 +62,6 @@ public class CellsActivity extends AppCompatActivity implements EasyViewHolder.O
     items.add(CellModel.headCell(r.getString(R.string.settings_header_device)).build());
     items.add(CellModel.textCell(r.getString(R.string.settings_battery))
         .drawable(SupportApp.drawable(R.drawable.ic_settings_battery))
-        .valueDrawable(SupportApp.drawable(R.drawable.ic_arrow_right))
         .build());
     items.add(CellModel.shadowCell().build());
 
