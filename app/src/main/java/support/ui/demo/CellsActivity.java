@@ -44,26 +44,48 @@ public class CellsActivity extends AppCompatActivity implements EasyViewHolder.O
 
   private void buildData() {
     final Resources r = SupportApp.appResources();
-    items.add(CellModel.headCell("其他").build());
+    items.add(CellModel.emptyCell().build());
+    items.add(CellModel.headCell(r.getString(R.string.settings_header_wifi)).build());
+    items.add(CellModel.textCell(r.getString(R.string.settings_wifi))
+        .drawable(SupportApp.drawable(R.drawable.ic_settings_wifi))
+        .needDivider(true)
+        .build());
+    items.add(CellModel.textCell(r.getString(R.string.settings_bluetooth))
+        .drawable(SupportApp.drawable(R.drawable.ic_settings_bluetooth))
+        .needDivider(true)
+        .build());
+    items.add(CellModel.textCell(r.getString(R.string.settings_more))
+        .drawable(SupportApp.drawable(R.drawable.ic_settings_more))
+        .build());
+    items.add(CellModel.shadowCell().build());
 
-    items.add(CellModel.textCell(r.getString(R.string.account_publish))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_publish))
+    items.add(CellModel.headCell(r.getString(R.string.settings_header_device)).build());
+    items.add(CellModel.textCell(r.getString(R.string.settings_battery))
+        .drawable(SupportApp.drawable(R.drawable.ic_settings_battery))
+        .valueDrawable(SupportApp.drawable(R.drawable.ic_arrow_right))
         .build());
-    items.add(CellModel.textCell(r.getString(R.string.account_classes))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_class))
-        .build());
+    items.add(CellModel.shadowCell().build());
 
-    items.add(CellModel.textCell(r.getString(R.string.account_collection))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_collection))
-        .detail("3")
+    items.add(CellModel.headCell(r.getString(R.string.settings_header_account)).build());
+    items.add(CellModel.textCell(r.getString(R.string.settings_location))
+        .drawable(SupportApp.drawable(R.drawable.ic_settings_location))
+        .needDivider(true)
         .build());
-    items.add(CellModel.textCell(r.getString(R.string.account_download))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_downloads))
+    items.add(CellModel.textCell(r.getString(R.string.settings_account))
+        .drawable(SupportApp.drawable(R.drawable.ic_settings_account))
         .build());
+    items.add(CellModel.shadowCell().build());
 
-    items.add(CellModel.textCell(r.getString(R.string.account_settings))
-        .drawable(SupportApp.drawable(R.drawable.ic_account_setting))
+    items.add(CellModel.headCell(r.getString(R.string.settings_header_system)).build());
+    items.add(CellModel.textCell(r.getString(R.string.settings_time))
+        .drawable(SupportApp.drawable(R.drawable.ic_settings_time))
+        .needDivider(true)
         .build());
+    items.add(CellModel.textCell(r.getString(R.string.settings_print))
+        .drawable(SupportApp.drawable(R.drawable.ic_settings_print))
+        .build());
+    items.add(CellModel.shadowBottomCell().build());
+
     mAdapter.addAll(items);
   }
 

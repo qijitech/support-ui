@@ -39,6 +39,14 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
     final Context context = mContext;
     CellViewHolder cellViewHolder = null;
     switch (viewType) {
+      case CellModel.VIEW_TYPE_LOADING: {
+        cellViewHolder = new CellViewHolder(new LoadingCell(context));
+        break;
+      }
+      case CellModel.VIEW_TYPE_DIVIDER: {
+        cellViewHolder = new CellViewHolder(new DividerCell(context));
+        break;
+      }
       case CellModel.VIEW_TYPE_EMPTY: {
         cellViewHolder = new CellViewHolder(new EmptyCell(context)) {
           @Override protected void bindTo(CellModel model) {
@@ -69,11 +77,15 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
         };
         break;
       }
+      case CellModel.VIEW_TYPE_SHADOW_BOTTOM: {
+        cellViewHolder = new CellViewHolder(new ShadowBottomSectionCell(context));
+        break;
+      }
       case CellModel.VIEW_TYPE_TEXT:{
         cellViewHolder = new CellViewHolder(new TextCell(context)) {
           @Override protected void bindTo(CellModel model) {
             TextCell textCell = (TextCell) itemView;
-            textCell.bindView(model.text, model.drawable, model.detail, null);
+            textCell.bindView(model.text, model.drawable, model.detail, model.valueDrawable, model.needDivider);
           }
         };
         break;

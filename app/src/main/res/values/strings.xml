@@ -1,8 +1,17 @@
 <resources>
-  <string name="app_name">support-ui</string>
-  <string name="account_publish">我的发布</string>
-  <string name="account_collection">我的收藏</string>
-  <string name="account_download">本地缓存</string>
-  <string name="account_classes">班级管理</string>
-  <string name="account_settings">设置</string>
+  <string name="app_name">设置</string>
+
+  <string name="settings_header_wifi">无线和网络</string>
+  <string name="settings_wifi">WLAN</string>
+  <string name="settings_bluetooth">蓝牙</string>
+  <string name="settings_more">更多</string>
+  <string name="settings_header_device">设备</string>
+  <string name="settings_battery">电池</string>
+  <string name="settings_header_account">个人</string>
+  <string name="settings_location">位置信息</string>
+  <string name="settings_account">账户</string>
+  <string name="settings_header_system">系统</string>
+  <string name="settings_time">日期和时间</string>
+  <string name="settings_print">打印</string>
+
 </resources>

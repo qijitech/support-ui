@@ -15,6 +15,9 @@ public class CellModel {
   public static final int VIEW_TYPE_SHADOW = 4;
   public static final int VIEW_TYPE_SETTINGS = 5;
   public static final int VIEW_TYPE_DETAIL_SETTINGS = 6;
+  public static final int VIEW_TYPE_DIVIDER = 7;
+  public static final int VIEW_TYPE_LOADING = 8;
+  public static final int VIEW_TYPE_SHADOW_BOTTOM = 9;
 
   public boolean enabled;
   public boolean checked;
@@ -26,6 +29,7 @@ public class CellModel {
   public int cellHeight;
 
   public Drawable drawable;
+  public Drawable valueDrawable;
   public String text;
   public String subtitle;
   public String detail;
@@ -39,6 +43,14 @@ public class CellModel {
     return new CellModel(itemViewType);
   }
 
+  public static CellModel.Builder dividerCell() {
+    return new CellModel.Builder(VIEW_TYPE_DIVIDER);
+  }
+
+  public static CellModel.Builder loadingCell() {
+    return new CellModel.Builder(VIEW_TYPE_LOADING);
+  }
+
   public static CellModel.Builder emptyCell() {
     return new CellModel.Builder(VIEW_TYPE_EMPTY);
   }
@@ -47,6 +59,10 @@ public class CellModel {
     CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_EMPTY);
     builder.cellHeight = height;
     return builder;
+  }
+
+  public static CellModel.Builder shadowBottomCell() {
+    return new CellModel.Builder(VIEW_TYPE_SHADOW_BOTTOM);
   }
 
   public static CellModel.Builder shadowCell() {
@@ -111,6 +127,7 @@ public class CellModel {
     private int cellHeight;
 
     private Drawable drawable;
+    private Drawable valueDrawable;
     private String text;
     private String subtitle;
     private String detail;
@@ -129,6 +146,7 @@ public class CellModel {
       model.tag = tag;
       model.cellHeight = cellHeight;
       model.drawable = drawable;
+      model.valueDrawable = valueDrawable;
       model.text = text;
       model.subtitle = subtitle;
       model.detail = detail;
@@ -163,6 +181,11 @@ public class CellModel {
 
     public Builder drawable(Drawable drawable) {
       this.drawable = drawable;
+      return this;
+    }
+
+    public Builder valueDrawable(Drawable drawable) {
+      this.valueDrawable = drawable;
       return this;
     }
 
