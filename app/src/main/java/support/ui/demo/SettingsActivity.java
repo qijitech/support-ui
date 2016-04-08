@@ -43,9 +43,8 @@ public class SettingsActivity extends AppCompatActivity implements EasyViewHolde
 
   private void buildData() {
     final Resources r = SupportApp.appResources();
-    items.add(CellModel.shadowCell(60).build());
+    items.add(CellModel.emptyCell().build());
     items.add(CellModel.headCell("Settings").build());
-
     items.add(CellModel.settingCell("Notification and Sounds")
         .needDivider(true)
         .build());

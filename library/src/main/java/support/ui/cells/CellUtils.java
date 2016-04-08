@@ -22,11 +22,11 @@ public final class CellUtils {
   }
 
   public static int getDetailColor(Context context) {
-    return ThemeCompat.getThemeAttrColor(context, R.attr.cellDetailColor, 0xff159588);
+    return ThemeCompat.getThemeAttrColor(context, R.attr.cellDetailColor, 0xff8a8a8a);
   }
 
   public static int getValueColor(Context context) {
-    return ThemeCompat.getThemeAttrColor(context, R.attr.cellValueColor, 0xff159588);
+    return ThemeCompat.getThemeAttrColor(context, R.attr.cellValueColor, 0xff8a8a8a);
   }
 
   public static int getDividerColor(Context context) {

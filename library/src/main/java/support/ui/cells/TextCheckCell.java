@@ -60,6 +60,7 @@ public class TextCheckCell extends FrameLayoutFixed {
     checkBox.setFocusable(false);
     checkBox.setFocusableInTouchMode(false);
     checkBox.setClickable(false);
+    checkBox.setBackgroundResource(0);
     addView(checkBox, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, 14, 0, 14, 0));
   }
 
