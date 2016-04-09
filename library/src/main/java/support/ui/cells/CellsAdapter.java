@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.carlosdelachica.easyrecycleradapters.adapter.EasyViewHolder;
 import com.carlosdelachica.easyrecycleradapters.adapter.debouncedlisteners.DebouncedOnClickListener;
 import java.util.ArrayList;
+import support.ui.R;
 
 /**
  * Created by YuGang Yang on 04 07, 2016.
@@ -91,6 +92,20 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
           @Override protected void bindTo(CellModel model) {
             TextCell textCell = (TextCell) itemView;
             textCell.bindView(model.text, model.drawable, model.value, model.valueDrawable, model.needDivider);
+          }
+        };
+        break;
+      }
+      case CellModel.VIEW_TYPE_TEXT_INFO_PRIVACY:{
+        cellViewHolder = new CellViewHolder(new TextInfoPrivacyCell(context)) {
+          @Override protected void bindTo(CellModel model) {
+            TextInfoPrivacyCell textCell = (TextInfoPrivacyCell) itemView;
+            textCell.setText(model.text);
+            if (model.isBottom) {
+              textCell.setBackgroundResource(R.drawable.greydivider_bottom);
+            } else {
+              textCell.setBackgroundResource(R.drawable.greydivider);
+            }
           }
         };
         break;

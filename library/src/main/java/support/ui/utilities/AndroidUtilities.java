@@ -1,9 +1,14 @@
 package support.ui.utilities;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.support.v4.hardware.display.DisplayManagerCompat;
+import android.support.v4.view.ViewCompat;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -101,5 +106,38 @@ public final class AndroidUtilities {
       return;
     }
     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+  }
+
+  public static void runOnUIThread(Runnable runnable) {
+    runOnUIThread(runnable, 0);
+  }
+
+  public static void runOnUIThread(Runnable runnable, long delay) {
+    if (delay == 0) {
+      SupportApp.appHandler().post(runnable);
+    } else {
+      SupportApp.appHandler().postDelayed(runnable, delay);
+    }
+  }
+
+  public static void cancelRunOnUIThread(Runnable runnable) {
+    SupportApp.appHandler().removeCallbacks(runnable);
+  }
+
+  public static void shakeView(final View view, final float x, final int num) {
+    if (num == 6) {
+      ViewCompat.setTranslationX(view, 0);
+      view.clearAnimation();
+      return;
+    }
+    AnimatorSet animatorSet = new AnimatorSet();
+    animatorSet.playTogether(ObjectAnimator.ofFloat(view, "translationX", AndroidUtilities.dp(x)));
+    animatorSet.setDuration(50);
+    animatorSet.addListener(new AnimatorListenerAdapter() {
+      @Override public void onAnimationEnd(Animator animation) {
+        shakeView(view, num == 5 ? 0 : -x, num + 1);
+      }
+    });
+    animatorSet.start();
   }
 }

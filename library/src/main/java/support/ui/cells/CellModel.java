@@ -18,10 +18,12 @@ public class CellModel {
   public static final int VIEW_TYPE_DIVIDER = 7;
   public static final int VIEW_TYPE_LOADING = 8;
   public static final int VIEW_TYPE_SHADOW_BOTTOM = 9;
+  public static final int VIEW_TYPE_TEXT_INFO_PRIVACY = 10;
 
   public boolean enabled;
   public boolean checked;
   public boolean needDivider;
+  public boolean isBottom;
   public boolean multiline;
 
   public int itemViewType;
@@ -82,6 +84,12 @@ public class CellModel {
     return builder;
   }
 
+  public static CellModel.Builder infoPrivacyCell(String text) {
+    CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_TEXT_INFO_PRIVACY);
+    builder.text = text;
+    return builder;
+  }
+
   public static CellModel.Builder textCell(String text) {
     return textCell(text, true);
   }
@@ -90,6 +98,13 @@ public class CellModel {
     CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_TEXT);
     builder.text = text;
     builder.enabled = enabled;
+    return builder;
+  }
+
+  public static CellModel.Builder checkCell(String text) {
+    CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_CHECK);
+    builder.text = text;
+    builder.enabled = true;
     return builder;
   }
 
@@ -120,6 +135,7 @@ public class CellModel {
     private boolean enabled;
     private boolean checked;
     private boolean needDivider;
+    private boolean isBottom;
     private boolean multiline;
 
     private int itemViewType;
@@ -142,6 +158,7 @@ public class CellModel {
       model.enabled = enabled;
       model.checked = checked;
       model.needDivider = needDivider;
+      model.isBottom = isBottom;
       model.multiline = multiline;
       model.tag = tag;
       model.cellHeight = cellHeight;
@@ -166,6 +183,11 @@ public class CellModel {
 
     public Builder needDivider(boolean needDivider) {
       this.needDivider = needDivider;
+      return this;
+    }
+
+    public Builder bottom(boolean isBottom) {
+      this.isBottom = isBottom;
       return this;
     }
 

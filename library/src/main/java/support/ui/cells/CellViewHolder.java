@@ -17,26 +17,20 @@ public class CellViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
   public CellViewHolder(View itemView) {
     super(itemView);
+    setBackground();
   }
 
   public void bindView(CellModel model) {
     this.model = model;
     if (model.enabled) {
       bindListeners();
-      setBackground();
     }
     bindTo(model);
   }
 
   private void setBackground() {
-    if (model.enabled) {
-      if (itemView.getBackground() == null) {
-        itemView.setBackgroundResource(R.drawable.list_selector);
-      }
-    } else {
-      if (itemView.getBackground() != null) {
-        itemView.setBackgroundDrawable(null);
-      }
+    if (itemView.getBackground() == null) {
+      itemView.setBackgroundResource(R.drawable.list_selector_white);
     }
   }
 

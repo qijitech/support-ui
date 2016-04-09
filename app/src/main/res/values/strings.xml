@@ -1,7 +1,7 @@
 <resources>
   <string name="app_name">Support UI</string>
   <string name="label_cells">设置</string>
-  <string name="label_settings">设置</string>
+  <string name="label_settings">新消息通知</string>
   <string name="label_content">Content</string>
 
   <string name="settings_header_wifi">无线和网络</string>
@@ -16,5 +16,19 @@
   <string name="settings_header_system">系统</string>
   <string name="settings_time">日期和时间</string>
   <string name="settings_print">打印</string>
+
+  <string name="settings_notifications">接收新消息通知</string>
+  <string name="settings_notifications_on">已关闭</string>
+  <string name="settings_notifications_off">打开</string>
+  <string name="settings_show_preview_text">通知显示消息详情</string>
+  <string name="settings_show_preview_text_info">关闭后,当收到微信消息时,通知提示将不显示发信人和内容摘要</string>
+  <string name="settings_alerts">功能消息免打扰</string>
+  <string name="settings_alerts_info">设置系统功能消息提示声音和振动的时段</string>
+  <string name="settings_sounds">声音</string>
+  <string name="settings_vibrate">振动</string>
+  <string name="settings_vibrate_info">当微信在运行时,你可以设置是否需要声音或者振动</string>
+  <string name="settings_moments_updates">朋友圈照片更新</string>
+  <string name="settings_moments_updates_info">关闭后,有朋友更新照片时,界面下面的"发现"切换按钮上不在出现红点提示</string>
+
 
 </resources>

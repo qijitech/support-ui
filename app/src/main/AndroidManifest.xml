@@ -42,6 +42,7 @@
           android:name="android.support.PARENT_ACTIVITY"
           android:value=".CellsActivity"/>
     </activity>
+
   </application>
 
 </manifest>
