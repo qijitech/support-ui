@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,7 +21,7 @@ import support.ui.content.RequiresContent;
       ReflectionContentPresenterFactory.fromViewClass(getClass());
   ContentPresenter contentPresenter;
 
-  @Bind(R.id.container) LinearLayout container;
+  @Bind(R.id.container) FrameLayout container;
   @Bind(R.id.support_ui_content_view) TextView textView;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
