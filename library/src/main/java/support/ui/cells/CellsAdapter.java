@@ -85,7 +85,7 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
         cellViewHolder = new CellViewHolder(new TextCell(context)) {
           @Override protected void bindTo(CellModel model) {
             TextCell textCell = (TextCell) itemView;
-            textCell.bindView(model.text, model.drawable, model.detail, model.valueDrawable, model.needDivider);
+            textCell.bindView(model.text, model.drawable, model.value, model.valueDrawable, model.needDivider);
           }
         };
         break;
@@ -94,7 +94,7 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
         cellViewHolder = new CellViewHolder(new TextSettingsCell(context)) {
           @Override protected void bindTo(CellModel model) {
             TextSettingsCell cell = (TextSettingsCell) itemView;
-            cell.bindView(model.text, model.drawable, model.detail, model.needDivider);
+            cell.bindView(model.text, model.drawable, model.value, model.needDivider);
           }
         };
         break;

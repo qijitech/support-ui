@@ -31,7 +31,7 @@ public class CellModel {
   public Drawable drawable;
   public Drawable valueDrawable;
   public String text;
-  public String subtitle;
+  public String value;
   public String detail;
   public Object data;
 
@@ -129,7 +129,7 @@ public class CellModel {
     private Drawable drawable;
     private Drawable valueDrawable;
     private String text;
-    private String subtitle;
+    private String value;
     private String detail;
     private Object data;
 
@@ -148,7 +148,7 @@ public class CellModel {
       model.drawable = drawable;
       model.valueDrawable = valueDrawable;
       model.text = text;
-      model.subtitle = subtitle;
+      model.value = value;
       model.detail = detail;
       model.data = data;
       return model;
@@ -194,8 +194,8 @@ public class CellModel {
       return this;
     }
 
-    public Builder subtitle(String subtitle) {
-      this.subtitle = subtitle;
+    public Builder value(String value) {
+      this.value = value;
       return this;
     }
 

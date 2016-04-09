@@ -20,6 +20,8 @@ import support.ui.cells.CellsAdapter;
  */
 public class SettingsActivity extends AppCompatActivity implements EasyViewHolder.OnItemClickListener {
 
+  private static final int TAG_ANIMATION = 1;
+
   private CellsAdapter mAdapter;
   ArrayList<CellModel> items = new ArrayList<>();
 
@@ -52,7 +54,7 @@ public class SettingsActivity extends AppCompatActivity implements EasyViewHolde
         .needDivider(true)
         .build());
     items.add(CellModel.settingCell("Language")
-        .detail("English")
+        .value("English")
         .build());
 
     items.add(CellModel.shadowCell().build());
@@ -60,6 +62,7 @@ public class SettingsActivity extends AppCompatActivity implements EasyViewHolde
     items.add(CellModel.checkCell("Enable Animations", true)
         .detail("djsalfjlasjfldsja")
         .needDivider(true)
+        .tag(TAG_ANIMATION)
         .build());
     items.add(CellModel.detailSettingCell("When using mobile data", "Photo, Voice message, Music, GIF")
         .needDivider(true)
@@ -78,6 +81,12 @@ public class SettingsActivity extends AppCompatActivity implements EasyViewHolde
   }
 
   @Override public void onItemClick(int position, View view) {
-
+    CellModel cellModel = items.get(position);
+    switch (cellModel.tag) {
+      case TAG_ANIMATION:
+        cellModel.checked = !cellModel.checked;
+        mAdapter.notifyItemChanged(position);
+        break;
+    }
   }
 }

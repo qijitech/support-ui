@@ -21,6 +21,8 @@ import support.ui.cells.CellsAdapter;
  */
 public class CellsActivity extends AppCompatActivity implements EasyViewHolder.OnItemClickListener {
 
+  private final static int TAG_WIFI = 1;
+
   private CellsAdapter mAdapter;
   ArrayList<CellModel> items = new ArrayList<>();
 
@@ -49,6 +51,7 @@ public class CellsActivity extends AppCompatActivity implements EasyViewHolder.O
     items.add(CellModel.textCell(r.getString(R.string.settings_wifi))
         .drawable(SupportApp.drawable(R.drawable.ic_settings_wifi))
         .needDivider(true)
+        .tag(TAG_WIFI)
         .build());
     items.add(CellModel.textCell(r.getString(R.string.settings_bluetooth))
         .drawable(SupportApp.drawable(R.drawable.ic_settings_bluetooth))
@@ -94,6 +97,11 @@ public class CellsActivity extends AppCompatActivity implements EasyViewHolder.O
   }
 
   @Override public void onItemClick(int position, View view) {
-    startActivity(new Intent(this, SettingsActivity.class));
+    CellModel cellModel = items.get(position);
+    switch (cellModel.tag) {
+      case TAG_WIFI:
+        startActivity(new Intent(this, SettingsActivity.class));
+        break;
+    }
   }
 }
