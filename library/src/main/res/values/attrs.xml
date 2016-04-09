@@ -6,6 +6,8 @@
     <attr format="color" name="cellTextColor"/>
     <attr format="color" name="cellValueColor"/>
     <attr format="color" name="cellDetailColor"/>
+    <attr format="color" name="cellInfoColor"/>
+    <attr format="color" name="cellLinkTextColor"/>
     <attr format="color" name="cellDividerColor"/>
   </declare-styleable>
 

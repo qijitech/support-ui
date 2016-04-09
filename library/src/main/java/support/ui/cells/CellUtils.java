@@ -26,7 +26,16 @@ public final class CellUtils {
   }
 
   public static int getValueColor(Context context) {
+
     return ThemeCompat.getThemeAttrColor(context, R.attr.cellValueColor, 0xff8a8a8a);
+  }
+
+  public static int getInfoColor(Context context) {
+    return ThemeCompat.getThemeAttrColor(context, R.attr.cellInfoColor, 0xff808080);
+  }
+
+  public static int getLinkTextColor(Context context) {
+    return ThemeCompat.getThemeAttrColor(context, R.attr.cellLinkTextColor, 0xff316f9f);
   }
 
   public static int getDividerColor(Context context) {
