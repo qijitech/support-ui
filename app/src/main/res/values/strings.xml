@@ -1,5 +1,8 @@
 <resources>
-  <string name="app_name">设置</string>
+  <string name="app_name">Support UI</string>
+  <string name="label_cells">设置</string>
+  <string name="label_settings">设置</string>
+  <string name="label_content">Content</string>
 
   <string name="settings_header_wifi">无线和网络</string>
   <string name="settings_wifi">WLAN</string>

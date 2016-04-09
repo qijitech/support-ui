@@ -1,5 +1,6 @@
 package support.ui.utilities;
 
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,8 +15,15 @@ public final class LayoutHelper {
   public static final int MATCH_PARENT = -1;
   public static final int WRAP_CONTENT = -2;
 
+  private LayoutHelper() {
+  }
+
   private static int getSize(float size) {
     return (int) (size < 0 ? size : AndroidUtilities.dp(size));
+  }
+
+  public static ViewGroup.LayoutParams createViewGroupLayoutParams() {
+    return new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT);
   }
 
   public static FrameLayout.LayoutParams createScroll(int width, int height, int gravity) {

@@ -9,7 +9,9 @@
       android:label="@string/app_name"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".CellsActivity">
+    <activity
+        android:name=".MainActivity"
+        android:launchMode="singleTask">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -17,7 +19,25 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".SettingsActivity" android:label="Settings">
+    <activity
+        android:name=".ContentTestActivity"
+        android:label="@string/label_content">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".MainActivity"/>
+    </activity>
+
+    <activity
+        android:name=".CellsActivity"
+        android:label="@string/label_settings">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".MainActivity"/>
+    </activity>
+
+    <activity
+        android:name=".SettingsActivity"
+        android:label="@string/label_settings">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
           android:value=".CellsActivity"/>
