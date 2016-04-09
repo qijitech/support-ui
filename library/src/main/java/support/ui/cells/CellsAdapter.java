@@ -24,6 +24,11 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
     mContext = context;
   }
 
+  public void addItem(CellModel cellModel) {
+    mItems.add(cellModel);
+    notifyItemChanged(mItems.size() -1);
+  }
+
   public void addAll(ArrayList<CellModel> items) {
     mItems.clear();
     mItems.addAll(items);
@@ -151,7 +156,15 @@ public class CellsAdapter extends RecyclerView.Adapter<CellViewHolder> {
     }
   }
 
-  private CellModel getItem(int position) {
+  public void clearAll() {
+    mItems.clear();
+  }
+
+  public ArrayList<CellModel> getItems() {
+    return mItems;
+  }
+
+  public CellModel getItem(int position) {
     return mItems.get(position);
   }
 }
