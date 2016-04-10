@@ -17,14 +17,12 @@
       android:animateLayoutChanges="true"
       >
 
-    <TextView
+    <fragment
         android:id="@id/support_ui_content_view"
+        android:name="support.ui.demo.ContentFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/support_ui_empty_title_placeholder"
-        android:textSize="30sp"
+        android:layout_height="match_parent"
+        android:tag="ContentFragment"
         />
   </FrameLayout>
 
