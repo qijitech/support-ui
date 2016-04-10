@@ -7,6 +7,7 @@ public class ReflectionContentPresenterFactory implements ContentPresenterFactor
 
   private Class<View> loadViewClass;
   private Class<View> emptyViewClass;
+  private Class<View> errorViewClass;
 
   @Nullable @SuppressWarnings("unchecked")
   public static ReflectionContentPresenterFactory fromViewClass(Class<?> viewClass) {
@@ -14,18 +15,20 @@ public class ReflectionContentPresenterFactory implements ContentPresenterFactor
     //noinspection unchecked
     Class<View> loadViewClass = annotation == null ? null : (Class<View>) annotation.loadView();
     Class<View> emptyViewClass = annotation == null ? null : (Class<View>) annotation.emptyView();
-    return new ReflectionContentPresenterFactory(loadViewClass, emptyViewClass);
+    Class<View> errorViewClass = annotation == null ? null : (Class<View>) annotation.errorView();
+    return new ReflectionContentPresenterFactory(loadViewClass, emptyViewClass, errorViewClass);
   }
 
   public ReflectionContentPresenterFactory(Class<View> loadViewClass,
-      Class<View> emptyViewClass) {
+      Class<View> emptyViewClass, Class<View> errorViewClass) {
     this.loadViewClass = loadViewClass;
     this.emptyViewClass = emptyViewClass;
+    this.errorViewClass = errorViewClass;
   }
 
   @Override public ContentPresenter createContentPresenter() {
     try {
-      return new ContentPresenter(loadViewClass, emptyViewClass);
+      return new ContentPresenter(loadViewClass, emptyViewClass, errorViewClass);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

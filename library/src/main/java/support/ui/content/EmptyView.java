@@ -5,25 +5,25 @@ import android.support.annotation.StringRes;
 import android.view.View;
 
 public interface EmptyView {
-  EmptyView buildImageView(@DrawableRes int drawableRes);
+  EmptyView buildEmptyImageView(@DrawableRes int drawableRes);
 
-  EmptyView buildTitle(@StringRes int stringRes);
+  EmptyView buildEmptyTitle(@StringRes int stringRes);
 
-  EmptyView buildTitle(String title);
+  EmptyView buildEmptyTitle(String title);
 
-  EmptyView buildSubtitle(@StringRes int stringRes);
+  EmptyView buildEmptySubtitle(@StringRes int stringRes);
 
-  EmptyView buildSubtitle(String subtitle);
+  EmptyView buildEmptySubtitle(String subtitle);
 
   EmptyView shouldDisplayEmptySubtitle(boolean display);
 
   EmptyView shouldDisplayEmptyTitle(boolean display);
 
-  EmptyView shouldDisplayImageView(boolean display);
+  EmptyView shouldDisplayEmptyImageView(boolean display);
 
-  void setOnEmptyClickListener(OnEmptyClickListener listener);
+  void setOnEmptyViewClickListener(OnEmptyViewClickListener listener);
 
-  interface OnEmptyClickListener {
-    void onEmptyClick(View view);
+  interface OnEmptyViewClickListener {
+    void onEmptyViewClick(View view);
   }
 }

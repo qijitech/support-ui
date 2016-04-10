@@ -11,11 +11,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import support.ui.content.ContentPresenter;
 import support.ui.content.EmptyView;
+import support.ui.content.ErrorView;
 import support.ui.content.ReflectionContentPresenterFactory;
 import support.ui.content.RequiresContent;
 
 @RequiresContent public class ContentTestActivity extends AppCompatActivity
-    implements EmptyView.OnEmptyClickListener {
+    implements EmptyView.OnEmptyViewClickListener, ErrorView.OnErrorViewClickListener {
 
   ReflectionContentPresenterFactory factory =
       ReflectionContentPresenterFactory.fromViewClass(getClass());
@@ -32,7 +33,7 @@ import support.ui.content.RequiresContent;
     contentPresenter.onCreate(this);
     contentPresenter.attachContainer(container);
     contentPresenter.attachContentView(textView);
-    contentPresenter.setOnEmptyClickListener(this);
+    contentPresenter.setOnEmptyViewClickListener(this);
   }
 
   @Override protected void onDestroy() {
@@ -49,24 +50,30 @@ import support.ui.content.RequiresContent;
         contentPresenter.displayLoadView();
         break;
       case R.id.btn_empty:
-        contentPresenter.buildImageView(R.drawable.support_ui_empty)
-            .buildEmptyTitle(R.string.support_ui_empty_title_placeholder)
-            .buildEmptySubtitle(R.string.support_ui_empty_subtitle_placeholder)
-            .displayEmptyView();
+        //contentPresenter.buildEmptyImageView(R.drawable.support_ui_empty)
+        //    .buildEmptyTitle(R.string.support_ui_empty_title_placeholder)
+        //    .buildEmptySubtitle(R.string.support_ui_empty_subtitle_placeholder)
+        //    .displayEmptyView();
+        contentPresenter.displayEmptyView();
         break;
       case R.id.btn_content:
         contentPresenter.displayContentView();
         break;
       case R.id.btn_error:
-        contentPresenter.buildImageView(R.drawable.support_ui_empty_network_error)
-            .buildEmptyTitle(R.string.support_ui_error_title_placeholder)
-            .buildEmptySubtitle(R.string.support_ui_error_subtitle_placeholder)
-            .displayEmptyView();
+        //contentPresenter.buildErrorImageView(R.drawable.support_ui_error_network)
+        //    .buildErrorTitle(R.string.support_ui_error_title_placeholder)
+        //    .buildErrorSubtitle(R.string.support_ui_error_subtitle_placeholder)
+        //    .displayErrorView();
+        contentPresenter.displayErrorView();
         break;
     }
   }
 
-  @Override public void onEmptyClick(View view) {
+  @Override public void onEmptyViewClick(View view) {
+    contentPresenter.displayLoadView();
+  }
+
+  @Override public void onErrorViewClick(View view) {
     contentPresenter.displayLoadView();
   }
 }
