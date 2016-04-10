@@ -35,3 +35,5 @@ dependencies {
   compile deps.smoothprogressbar
   compile deps.butterknife
 }
+
+apply from: '../.buildscript/deploy.gradle'
