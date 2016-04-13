@@ -34,6 +34,7 @@ dependencies {
   compile deps.supportAnnotations
   compile deps.smoothprogressbar
   compile deps.butterknife
+  compile deps.prefs
 }
 
 apply from: '../.buildscript/deploy.gradle'

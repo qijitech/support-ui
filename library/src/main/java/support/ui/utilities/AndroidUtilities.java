@@ -5,8 +5,11 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v4.hardware.display.DisplayManagerCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.DisplayMetrics;
@@ -140,4 +143,32 @@ public final class AndroidUtilities {
     });
     animatorSet.start();
   }
+
+  /**
+   * 获取AndroidManifest中配置的meta-data
+   * @param context Context
+   * @param key String
+   * @return String
+   */
+  public static String getMetaData(Context context, String key) {
+    Bundle metaData = null;
+    String value = null;
+    if (context == null || key == null) {
+      return null;
+    }
+    try {
+      ApplicationInfo ai = context.getPackageManager().getApplicationInfo(
+          context.getPackageName(), PackageManager.GET_META_DATA);
+      if (null != ai) {
+        metaData = ai.metaData;
+      }
+      if (null != metaData) {
+        value = metaData.getString(key);
+      }
+    } catch (PackageManager.NameNotFoundException e) {
+      // Nothing to do
+    }
+    return value;
+  }
+
 }

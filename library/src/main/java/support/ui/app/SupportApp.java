@@ -9,6 +9,9 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
+import me.alexrs.prefs.lib.Prefs;
+import support.ui.utilities.AppInfo;
 
 /**
  * Created by YuGang Yang on 04 07, 2016.
@@ -19,6 +22,7 @@ public class SupportApp extends Application {
   private static volatile Context sAppContext;
   private static volatile SupportApp mInstance;
   private static volatile Handler sAppHandler;
+  private static volatile AppInfo mAppInfo;
 
   @Override public void onCreate() {
     super.onCreate();
@@ -30,6 +34,17 @@ public class SupportApp extends Application {
     sAppContext = null;
     mInstance = null;
     sAppHandler = null;
+    mAppInfo = null;
+  }
+
+  /**
+   * @return applicaton info
+   */
+  public static AppInfo appInfo() {
+    if (mAppInfo == null) {
+      mAppInfo = new AppInfo(appContext());
+    }
+    return mAppInfo;
   }
 
   /**
@@ -79,5 +94,22 @@ public class SupportApp extends Application {
     mInstance = this;
     sAppContext = getApplicationContext();
     sAppHandler = new Handler(sAppContext.getMainLooper());
+  }
+
+  public static void enterApp() {
+    Prefs.with(appContext()).save("is_first_enter_app", appInfo().versionCode);
+  }
+
+  /**
+   * 判断是否第一次进入APP
+   * @return
+   */
+  public static boolean isFirstEnterApp() {
+    String ver = Prefs.with(appContext()).getString("is_first_enter_app", null);
+    if (TextUtils.isEmpty(ver) || !ver.equals(appInfo().versionCode)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
