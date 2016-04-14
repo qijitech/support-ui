@@ -11,4 +11,12 @@
     <attr format="color" name="cellDividerColor"/>
   </declare-styleable>
 
+  <declare-styleable name="SupportButton">
+    <attr format="color" name="supportButtonRippleColor"/>
+    <attr format="color" name="supportButtonPressedColor"/>
+    <attr format="color" name="supportButtonDisabledColor"/>
+    <attr format="color" name="supportButtonNormalColor"/>
+    <attr format="dimension" name="supportButtonCornerRadius"/>
+  </declare-styleable>
+
 </resources>

@@ -3,12 +3,13 @@
     package="support.ui.demo">
 
   <application
-      android:name=".SupportDemoApp"
+      android:name="support.ui.app.SupportApp"
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
       android:supportsRtl="true"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      >
     <activity
         android:name=".MainActivity"
         android:launchMode="singleTask">
@@ -41,6 +42,14 @@
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
           android:value=".CellsActivity"/>
+    </activity>
+
+    <activity
+        android:name=".ButtonsActivity"
+        android:label="@string/label_buttons">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".MainActivity"/>
     </activity>
 
   </application>

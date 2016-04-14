@@ -293,7 +293,7 @@ public final class ContentPresenter {
       return constructor.newInstance(context);
     } catch (Throwable e) {
       throw new RuntimeException(
-          "Unable to create View for" + viewClass + ". " + e.getCause().getMessage(), e);
+          "Unable to create View for" + viewClass + ". " + e.getLocalizedMessage(), e);
     }
   }
 }

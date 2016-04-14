@@ -4,6 +4,7 @@
  */
 package support.ui.utilities;
 
+import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import static android.view.View.GONE;
@@ -56,6 +57,14 @@ public class ViewUtils {
           view.setVisibility(VISIBLE);
       }
     return view;
+  }
+
+  public static void setBackground(View view, Drawable drawable) {
+    if (BuildCompat.hasJellyBean()) {
+      view.setBackground(drawable);
+    } else {
+      view.setBackgroundDrawable(drawable);
+    }
   }
 
   private ViewUtils() {
