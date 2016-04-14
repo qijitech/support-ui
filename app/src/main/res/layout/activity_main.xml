@@ -23,6 +23,7 @@
       android:id="@+id/btn_content"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/activity_vertical_margin"
       android:text="Content Test"
       />
 
@@ -30,6 +31,7 @@
       android:id="@+id/btn_buttons"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/activity_vertical_margin"
       android:text="Buttons Test"
       />
 </LinearLayout>

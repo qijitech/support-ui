@@ -10,6 +10,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.support.v4.graphics.ColorUtils;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import java.util.Arrays;
@@ -44,8 +45,10 @@ public class SupportButton extends AppCompatButton {
     if (BuildCompat.hasLollipop()) {
       ViewUtils.setBackground(this, createRippleDrawable());
     } else {
-      ViewUtils.setBackground(this, createRadiusBackground());
-      setSupportBackgroundTintList(createButtonColorStateList());
+      Drawable drawable = createRadiusBackground();
+      drawable = DrawableCompat.wrap(drawable);
+      DrawableCompat.setTintList(drawable, createButtonColorStateList());
+      ViewUtils.setBackground(this, drawable);
     }
   }
 
