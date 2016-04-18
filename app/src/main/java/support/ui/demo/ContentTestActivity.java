@@ -16,7 +16,7 @@ import support.ui.content.ErrorView;
 import support.ui.content.ReflectionContentPresenterFactory;
 import support.ui.content.RequiresContent;
 
-@RequiresContent(loadView = LoadView.class) public class ContentTestActivity extends AppCompatActivity
+@RequiresContent/*(loadView = LoadView.class)*/ public class ContentTestActivity extends AppCompatActivity
     implements EmptyView.OnEmptyViewClickListener, ErrorView.OnErrorViewClickListener {
 
   ReflectionContentPresenterFactory factory =
@@ -36,6 +36,7 @@ import support.ui.content.RequiresContent;
     contentPresenter.attachContainer(container);
     contentPresenter.attachContentView(fragment.getView());
     contentPresenter.setOnEmptyViewClickListener(this);
+    contentPresenter.setOnErrorViewClickListener(this);
   }
 
   @Override protected void onDestroy() {
