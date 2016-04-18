@@ -57,7 +57,7 @@ public class EasyRecyclerAdapter extends RecyclerView.Adapter<EasyViewHolder> {
   }
 
   @Override public void onBindViewHolder(EasyViewHolder holder, int position) {
-    holder.bindTo(dataList.get(position));
+    holder.bindTo(position, dataList.get(position));
   }
 
   @Override public int getItemViewType(int position) {

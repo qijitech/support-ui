@@ -34,7 +34,7 @@ public abstract class EasyViewHolder<V> extends RecyclerView.ViewHolder
     if (longClickListener == null) {
       return false;
     }
-    return longClickListener.onLongItemClicked(getPosition(), itemView);
+    return longClickListener.onLongItemClicked(getAdapterPosition(), itemView);
   }
 
   @Override public void onClick(View v) {
@@ -42,7 +42,7 @@ public abstract class EasyViewHolder<V> extends RecyclerView.ViewHolder
     itemClickListener.onItemClick(getAdapterPosition(), v);
   }
 
-  public abstract void bindTo(V value);
+  public abstract void bindTo(int position, V value);
 
   public interface OnItemClickListener {
     void onItemClick(final int position, View view);
