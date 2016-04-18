@@ -53,7 +53,7 @@ public abstract class SupportCellsActivity extends AppCompatActivity
   }
 
   @Override public void onItemClick(int position, View view) {
-    onItemClick((CellModel) mAdapter.get(position));
+    onItemClick(mAdapter.get(position));
   }
 
   public RecyclerView getRecyclerView() {
@@ -68,13 +68,17 @@ public abstract class SupportCellsActivity extends AppCompatActivity
     mAdapter.clear();
   }
 
-  public void addItem(CellModel cellModel) {
-    mAdapter.add(cellModel);
+  public void addItem(Object object) {
+    mAdapter.add(object);
+  }
+
+  public void appendAll(ArrayList<CellModel> items) {
+    mAdapter.appendAll(items);
   }
 
   public void addAll(ArrayList<CellModel> items) {
     mAdapter.addAll(items);
   }
 
-  protected abstract void onItemClick(CellModel cellModel);
+  protected abstract void onItemClick(Object object);
 }

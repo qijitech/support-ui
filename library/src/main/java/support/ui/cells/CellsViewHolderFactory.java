@@ -108,9 +108,9 @@ public class CellsViewHolderFactory extends BaseEasyViewHolderFactory {
           }
         };
         break;
-      } default: {
-        return super.create(viewType, parent);
       }
+      default:
+        return super.create(viewType, parent);
     }
     return cellViewHolder;
   }

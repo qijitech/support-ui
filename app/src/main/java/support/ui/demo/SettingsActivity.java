@@ -51,7 +51,7 @@ public class SettingsActivity extends SupportCellsActivity {
     return items;
   }
 
-  @Override protected void onItemClick(CellModel cellModel) {
+  @Override protected void onItemClick(Object object) {
 
   }
 }

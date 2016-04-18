@@ -20,7 +20,9 @@ public class CellsActivity extends SupportCellsActivity implements EasyViewHolde
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    addAll(buildData());
+    getAdapter().bind(User.class, AccountHeader.class);
+    addItem(new User());
+    appendAll(buildData());
   }
 
   private ArrayList<CellModel> buildData() {
@@ -70,11 +72,15 @@ public class CellsActivity extends SupportCellsActivity implements EasyViewHolde
     return items;
   }
 
-  @Override protected void onItemClick(CellModel cellModel) {
-    switch (cellModel.tag) {
-      case TAG_WIFI:
-        startActivity(new Intent(this, SettingsActivity.class));
-        break;
+  @Override protected void onItemClick(Object o) {
+    if (o instanceof CellModel) {
+      switch (((CellModel)o).tag) {
+        case TAG_WIFI:
+          startActivity(new Intent(this, SettingsActivity.class));
+          break;
+      }
+      return;
     }
+
   }
 }

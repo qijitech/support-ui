@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:background="@android:color/darker_gray"
+    >
+
+  <support.ui.components.SupportButton
+      android:id="@android:id/button2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:minHeight="48dp"
+      android:text="@string/app_name"
+      android:textColor="@android:color/white"
+      app:supportButtonCornerRadius="4dp"
+      app:supportButtonNormalColor="#787878"
+      />
+
+</LinearLayout>

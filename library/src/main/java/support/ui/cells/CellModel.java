@@ -8,17 +8,17 @@ import android.graphics.drawable.Drawable;
  */
 public class CellModel {
 
-  public static final int VIEW_TYPE_EMPTY = 0;
-  public static final int VIEW_TYPE_HEADER = 1;
-  public static final int VIEW_TYPE_CHECK = 2;
-  public static final int VIEW_TYPE_TEXT = 3;
-  public static final int VIEW_TYPE_SHADOW = 4;
-  public static final int VIEW_TYPE_SETTINGS = 5;
-  public static final int VIEW_TYPE_DETAIL_SETTINGS = 6;
-  public static final int VIEW_TYPE_DIVIDER = 7;
-  public static final int VIEW_TYPE_LOADING = 8;
-  public static final int VIEW_TYPE_SHADOW_BOTTOM = 9;
-  public static final int VIEW_TYPE_TEXT_INFO_PRIVACY = 10;
+  public static final int VIEW_TYPE_EMPTY = 10000;
+  public static final int VIEW_TYPE_HEADER = VIEW_TYPE_EMPTY + 1;
+  public static final int VIEW_TYPE_CHECK = VIEW_TYPE_EMPTY + 2;
+  public static final int VIEW_TYPE_TEXT = VIEW_TYPE_EMPTY + 3;
+  public static final int VIEW_TYPE_SHADOW = VIEW_TYPE_EMPTY + 4;
+  public static final int VIEW_TYPE_SETTINGS = VIEW_TYPE_EMPTY + 5;
+  public static final int VIEW_TYPE_DETAIL_SETTINGS = VIEW_TYPE_EMPTY + 6;
+  public static final int VIEW_TYPE_DIVIDER = VIEW_TYPE_EMPTY + 7;
+  public static final int VIEW_TYPE_LOADING = VIEW_TYPE_EMPTY + 8;
+  public static final int VIEW_TYPE_SHADOW_BOTTOM = VIEW_TYPE_EMPTY + 9;
+  public static final int VIEW_TYPE_TEXT_INFO_PRIVACY = VIEW_TYPE_EMPTY + 10;
 
   public boolean enabled;
   public boolean checked;
