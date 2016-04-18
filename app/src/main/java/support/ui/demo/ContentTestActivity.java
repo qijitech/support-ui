@@ -16,7 +16,7 @@ import support.ui.content.ErrorView;
 import support.ui.content.ReflectionContentPresenterFactory;
 import support.ui.content.RequiresContent;
 
-@RequiresContent public class ContentTestActivity extends AppCompatActivity
+@RequiresContent(loadView = LoadView.class) public class ContentTestActivity extends AppCompatActivity
     implements EmptyView.OnEmptyViewClickListener, ErrorView.OnErrorViewClickListener {
 
   ReflectionContentPresenterFactory factory =
