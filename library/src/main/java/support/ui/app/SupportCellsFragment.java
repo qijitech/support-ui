@@ -2,9 +2,10 @@ package support.ui.app;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
@@ -17,38 +18,47 @@ import support.ui.cells.CellsViewHolderFactory;
  * Created by YuGang Yang on 04 09, 2016.
  * Copyright 2015-2016 qiji.tech. All rights reserved.
  */
-public abstract class SupportCellsActivity extends AppCompatActivity
+public abstract class SupportCellsFragment extends Fragment
     implements EasyViewHolder.OnItemClickListener {
 
   private RecyclerView mRecyclerView;
   private EasyRecyclerAdapter mAdapter;
 
-  @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setupAdapter();
+  @Nullable @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+      @Nullable Bundle savedInstanceState) {
     setupRecyclerView();
-    setContentView(mRecyclerView);
+    return mRecyclerView;
   }
 
-  @Override protected void onDestroy() {
-    super.onDestroy();
+  @Override public void onDestroyView() {
+    super.onDestroyView();
     mRecyclerView = null;
+  }
+
+  @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setupAdapter();
+  }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
     mAdapter = null;
   }
 
   private void setupAdapter() {
-    mAdapter = new EasyRecyclerAdapter(this);
-    mAdapter.viewHolderFactory(new CellsViewHolderFactory(this));
+    mAdapter = new EasyRecyclerAdapter(getContext());
+    mAdapter.viewHolderFactory(new CellsViewHolderFactory(getContext()));
     mAdapter.setOnClickListener(this);
   }
 
   private void setupRecyclerView() {
-    mRecyclerView = new RecyclerView(this);
+    mRecyclerView = new RecyclerView(getContext());
     ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
         ViewGroup.LayoutParams.MATCH_PARENT);
     mRecyclerView.setLayoutParams(params);
     mRecyclerView.setHasFixedSize(true);
-    mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerView.setAdapter(mAdapter);
   }
 

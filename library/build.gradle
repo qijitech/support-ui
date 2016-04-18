@@ -29,9 +29,9 @@ dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   testCompile 'junit:junit:4.12'
 
-  compile deps.easyrecycleradapters
-  compile deps.appcompatV7
   compile deps.supportAnnotations
+  compile deps.appcompatV7
+  compile deps.recyclerviewV7
   compile deps.smoothprogressbar
   compile deps.butterknife
   compile deps.prefs

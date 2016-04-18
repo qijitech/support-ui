@@ -1,59 +1,25 @@
 package support.ui.demo;
 
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import java.util.ArrayList;
 import support.ui.app.SupportApp;
+import support.ui.app.SupportCellsFragment;
 import support.ui.cells.CellModel;
-import support.ui.cells.CellsAdapter;
 
 /**
  * Created by YuGang Yang on 04 10, 2016.
  * Copyright 2015-2016 qiji.tech. All rights reserved.
  */
-public class ContentFragment extends Fragment {
-
-  private RecyclerView mRecyclerView;
-  private CellsAdapter mAdapter;
-
-  @Nullable @Override
-  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
-    setupRecyclerView();
-    setupAdapter();
-    return mRecyclerView;
-  }
+public class ContentFragment extends SupportCellsFragment {
 
   @Override public void onResume() {
     super.onResume();
-    mAdapter.addAll(buildData());
+    clearAll();
+    buildData();
   }
 
-  @Override public void onDestroyView() {
-    super.onDestroyView();
-    mRecyclerView = null;
-    mAdapter = null;
-  }
+  @Override protected void onItemClick(CellModel cellModel) {
 
-  private void setupAdapter() {
-    mAdapter = new CellsAdapter(getContext());
-    mRecyclerView.setHasFixedSize(true);
-    mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    mRecyclerView.setAdapter(mAdapter);
-  }
-
-  private void setupRecyclerView() {
-    mRecyclerView = new RecyclerView(getContext());
-    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-        ViewGroup.LayoutParams.MATCH_PARENT);
-    mRecyclerView.setLayoutParams(params);
   }
 
   private ArrayList<CellModel> buildData() {

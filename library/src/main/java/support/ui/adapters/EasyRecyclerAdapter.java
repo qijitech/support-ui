@@ -35,6 +35,10 @@ public class EasyRecyclerAdapter extends RecyclerView.Adapter<EasyViewHolder> {
     bind(valueClass, easyViewHolderClass);
   }
 
+  public void viewHolderFactory(BaseEasyViewHolderFactory easyViewHolderFactory) {
+    this.viewHolderFactory = easyViewHolderFactory;
+  }
+
   public EasyRecyclerAdapter(BaseEasyViewHolderFactory easyViewHolderFactory) {
     this.viewHolderFactory = easyViewHolderFactory;
   }
@@ -56,7 +60,7 @@ public class EasyRecyclerAdapter extends RecyclerView.Adapter<EasyViewHolder> {
     }
   }
 
-  @Override public void onBindViewHolder(EasyViewHolder holder, int position) {
+  @SuppressWarnings("unchecked") @Override public void onBindViewHolder(EasyViewHolder holder, int position) {
     holder.bindTo(position, dataList.get(position));
   }
 
@@ -118,6 +122,10 @@ public class EasyRecyclerAdapter extends RecyclerView.Adapter<EasyViewHolder> {
   public void clear() {
     dataList.clear();
     notifyDataSetChanged();
+  }
+
+  public List<Object> getItems() {
+    return dataList;
   }
 
   public Object get(int position) {
