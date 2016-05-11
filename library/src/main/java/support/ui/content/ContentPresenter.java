@@ -260,6 +260,7 @@ public final class ContentPresenter {
     container.removeAllViews();
     final View view = checkView(viewId);
     final ViewGroup.LayoutParams layoutParams = LayoutHelper.createViewGroupLayoutParams();
+    container.removeView(view);
     container.addView(view, layoutParams);
     mCurrentId = viewId;
     return view;
