@@ -4,6 +4,7 @@
   <string name="label_settings">新消息通知</string>
   <string name="label_buttons">Buttons</string>
   <string name="label_content">Content</string>
+  <string name="label_ykx">打车</string>
 
   <string name="settings_header_wifi">无线和网络</string>
   <string name="settings_wifi">WLAN</string>
@@ -31,5 +32,16 @@
   <string name="settings_moments_updates">朋友圈照片更新</string>
   <string name="settings_moments_updates_info">关闭后,有朋友更新照片时,界面下面的"发现"切换按钮上不在出现红点提示</string>
 
+
+  <string name="ykx_notice">您已发布一单行程,请点击查看</string>
+  <string name="ykx_location_start">起始地点</string>
+  <string name="ykx_location_end">到达地点</string>
+  <string name="ykx_time">何时出发</string>
+  <string name="ykx_people">几人乘车</string>
+  <string name="ykx_flight">请输入航班号</string>
+  <string name="ykx_phone">请输入手机号</string>
+  <string name="ykx_phone_other">帮他人叫</string>
+  <string name="ykx_thanks">感谢费</string>
+  <string name="ykx_trips">感谢费和行程偏好</string>
 
 </resources>

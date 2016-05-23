@@ -62,7 +62,7 @@ public class CellsViewHolderFactory extends BaseEasyViewHolderFactory {
         cellViewHolder = new CellViewHolder(new TextCell(context)) {
           @Override public void bindTo(int position, CellModel model) {
             TextCell textCell = (TextCell) itemView;
-            textCell.bindView(model.text, model.drawable, model.value, model.valueDrawable, model.needDivider);
+            textCell.bindView(model);
           }
         };
         break;

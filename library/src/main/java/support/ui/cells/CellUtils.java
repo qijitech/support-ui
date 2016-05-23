@@ -13,6 +13,10 @@ public final class CellUtils {
 
   }
 
+  public static int getHintColor(Context context) {
+    return ThemeCompat.getThemeAttrColor(context, R.attr.cellTextHintColor, 0xff8a8a8a);
+  }
+
   public static int getTextColor(Context context) {
     return ThemeCompat.getThemeAttrColor(context, R.attr.cellTextColor, 0xff333333);
   }

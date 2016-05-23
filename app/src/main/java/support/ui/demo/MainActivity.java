@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
   @OnClick({
       R.id.btn_cell,
       R.id.btn_content,
-      R.id.btn_buttons
+      R.id.btn_buttons,
+      R.id.btn_ykx
   }) public void onClick(View view) {
     switch (view.getId()) {
       case R.id.btn_cell:
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         break;
       case R.id.btn_buttons:
         startActivity(new Intent(this, ButtonsActivity.class));
+        break;
+      case R.id.btn_ykx:
+        startActivity(new Intent(this, YKXActivity.class));
         break;
     }
   }

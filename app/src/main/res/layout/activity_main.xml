@@ -49,4 +49,16 @@
       app:supportButtonCornerRadius="4dp"
       />
 
+  <support.ui.components.SupportButton
+      android:id="@+id/btn_ykx"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/activity_vertical_margin"
+      android:gravity="center"
+      android:minHeight="48dp"
+      android:text="打车"
+      android:textColor="@android:color/white"
+      app:supportButtonCornerRadius="4dp"
+      />
+
 </LinearLayout>

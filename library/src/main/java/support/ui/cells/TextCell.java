@@ -3,16 +3,15 @@ package support.ui.cells;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import support.ui.R;
 import support.ui.utilities.AndroidUtilities;
 import support.ui.utilities.LayoutHelper;
-import support.ui.utilities.LocaleController;
 
 /**
  * Created by YuGang Yang on 04 07, 2016.
@@ -44,8 +43,9 @@ public class TextCell extends FrameLayout {
     textView.setMaxLines(1);
     textView.setSingleLine(true);
     textView.setEllipsize(TextUtils.TruncateAt.END);
-    textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
-    addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 16 : 71, 0, LocaleController.isRTL ? 71 : 16, 0));
+    textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+    addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT,
+        Gravity.LEFT | Gravity.TOP, 71, 0, 16, 0));
 
     valueTextView = new TextView(context);
     valueTextView.setTextColor(CellUtils.getValueColor(context));
@@ -53,20 +53,19 @@ public class TextCell extends FrameLayout {
     valueTextView.setLines(1);
     valueTextView.setMaxLines(1);
     valueTextView.setSingleLine(true);
-    valueTextView.setGravity((LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL);
+    valueTextView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
     addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT,
-        (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.TOP, LocaleController.isRTL ? 24 : 0, 0,
-        LocaleController.isRTL ? 0 : 24, 0));
+        Gravity.RIGHT | Gravity.TOP, 0, 0,32, 0));
 
     imageView = new ImageView(context);
     imageView.setScaleType(ImageView.ScaleType.CENTER);
-    addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 16, 5, LocaleController.isRTL ? 16 : 0, 0));
+    addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT,
+        Gravity.LEFT | Gravity.TOP, 16, 5, 0, 0));
 
     valueImageView = new ImageView(context);
     valueImageView.setScaleType(ImageView.ScaleType.CENTER);
     addView(valueImageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT,
-        (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL,
-        LocaleController.isRTL ? 24 : 0, 0, LocaleController.isRTL ? 0 : 24, 0));
+        Gravity.RIGHT | Gravity.CENTER_VERTICAL, 0, 0, 16, 0));
   }
 
   @Override
@@ -79,25 +78,44 @@ public class TextCell extends FrameLayout {
     textView.setTextColor(color);
   }
 
-  public void bindView(String text, Drawable iconDrawable, String value, Drawable valueDrawable, boolean divider) {
-    textView.setText(text);
+  public void bindView(CellModel cellModel) {
+    if (cellModel.backgroundResource != 0) {
+      setBackgroundResource(cellModel.backgroundResource);
+    }
+    if (!TextUtils.isEmpty(cellModel.text)) {
+      textView.setText(cellModel.text);
+      textView.setTextColor(CellUtils.getTextColor(getContext()));
+    } else if (!TextUtils.isEmpty(cellModel.hint)) {
+      textView.setText(cellModel.hint);
+      textView.setTextColor(CellUtils.getHintColor(getContext()));
+    }
+    if (cellModel.textColor != 0) {
+      textView.setTextColor(cellModel.textColor);
+    }
+
     boolean paddingSet = false;
-    if (iconDrawable != null) {
-      imageView.setImageDrawable(iconDrawable);
+    if (cellModel.drawable != null) {
+      imageView.setImageDrawable(cellModel.drawable);
       imageView.setVisibility(VISIBLE);
       imageView.setPadding(0, AndroidUtilities.dp(7), 0, 0);
       paddingSet = true;
     } else {
       imageView.setVisibility(INVISIBLE);
     }
-    if (!TextUtils.isEmpty(value)) {
-      valueTextView.setText(value);
+    if (!TextUtils.isEmpty(cellModel.value)) {
+      valueTextView.setText(cellModel.value);
       valueTextView.setVisibility(VISIBLE);
     } else {
       valueTextView.setVisibility(INVISIBLE);
     }
-    if (valueDrawable != null) {
-      valueImageView.setImageDrawable(valueDrawable);
+    if (cellModel.valueDrawable != null) {
+      valueImageView.setImageDrawable(cellModel.valueDrawable);
+      valueImageView.setVisibility(VISIBLE);
+      if (!paddingSet) {
+        imageView.setPadding(0, AndroidUtilities.dp(7), 0, 0);
+      }
+    } else if (cellModel.showArrow) {
+      valueImageView.setImageResource(R.drawable.ic_arrow_right);
       valueImageView.setVisibility(VISIBLE);
       if (!paddingSet) {
         imageView.setPadding(0, AndroidUtilities.dp(7), 0, 0);
@@ -106,8 +124,8 @@ public class TextCell extends FrameLayout {
       valueImageView.setVisibility(INVISIBLE);
     }
 
-    needDivider = divider;
-    setWillNotDraw(!divider);
+    needDivider = cellModel.needDivider;
+    setWillNotDraw(!cellModel.needDivider);
     requestLayout();
   }
 

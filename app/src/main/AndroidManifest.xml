@@ -29,6 +29,14 @@
     </activity>
 
     <activity
+        android:name=".YKXActivity"
+        android:label="@string/label_ykx">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".MainActivity"/>
+    </activity>
+
+    <activity
         android:name=".CellsActivity"
         android:label="@string/label_settings">
       <meta-data

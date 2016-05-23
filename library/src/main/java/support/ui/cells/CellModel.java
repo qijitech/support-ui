@@ -24,15 +24,19 @@ public class CellModel {
   public boolean checked;
   public boolean needDivider;
   public boolean isBottom;
-  public boolean multiline;
+  public boolean showArrow;
 
+  public boolean multiline;
   public int itemViewType;
   public int tag;
   public int cellHeight;
+  public int backgroundResource;
+  public int textColor;
 
   public Drawable drawable;
   public Drawable valueDrawable;
   public String text;
+  public String hint;
   public String value;
   public String detail;
   public Object data;
@@ -91,12 +95,17 @@ public class CellModel {
   }
 
   public static CellModel.Builder textCell(String text) {
-    return textCell(text, true);
+    return textCell(null, text, true);
   }
 
-  public static CellModel.Builder textCell(String text, boolean enabled) {
+  public static CellModel.Builder textHintCell(String hint) {
+    return textCell(hint, null, true);
+  }
+
+  public static CellModel.Builder textCell(String hint, String text, boolean enabled) {
     CellModel.Builder builder = new CellModel.Builder(VIEW_TYPE_TEXT);
     builder.text = text;
+    builder.hint = hint;
     builder.enabled = enabled;
     return builder;
   }
@@ -135,16 +144,20 @@ public class CellModel {
     private boolean enabled;
     private boolean checked;
     private boolean needDivider;
+    private boolean showArrow;
     private boolean isBottom;
     private boolean multiline;
 
     private int itemViewType;
     private int tag;
     private int cellHeight;
+    private int backgroundResource;
+    private int textColor;
 
     private Drawable drawable;
     private Drawable valueDrawable;
     private String text;
+    private String hint;
     private String value;
     private String detail;
     private Object data;
@@ -165,9 +178,13 @@ public class CellModel {
       model.drawable = drawable;
       model.valueDrawable = valueDrawable;
       model.text = text;
+      model.hint = hint;
       model.value = value;
       model.detail = detail;
       model.data = data;
+      model.backgroundResource = backgroundResource;
+      model.textColor = textColor;
+      model.showArrow = showArrow;
       return model;
     }
 
@@ -183,6 +200,11 @@ public class CellModel {
 
     public Builder needDivider(boolean needDivider) {
       this.needDivider = needDivider;
+      return this;
+    }
+
+    public Builder showArrowRight(boolean showArrow) {
+      this.showArrow = showArrow;
       return this;
     }
 
@@ -213,6 +235,21 @@ public class CellModel {
 
     public Builder text(String text) {
       this.text = text;
+      return this;
+    }
+
+    public Builder textColor(int textColor) {
+      this.textColor = textColor;
+      return this;
+    }
+
+    public Builder backgroundResource(int backgroundResource) {
+      this.backgroundResource = backgroundResource;
+      return this;
+    }
+
+    public Builder hint(String hint) {
+      this.hint = hint;
       return this;
     }
 
