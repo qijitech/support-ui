@@ -10,4 +10,14 @@
     <item name="cellHeaderColor">@color/colorAccent</item>
   </style>
 
+  <!-- Base application theme. -->
+  <style name="AppTheme.YKX" parent="AppTheme">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">#f06e4c</item>
+    <item name="colorPrimaryDark">#cc5c3e</item>
+    <item name="colorAccent">#80250e</item>
+    <item name="android:windowBackground">@color/windowBackground</item>
+    <item name="cellHeaderColor">@color/colorAccent</item>
+  </style>
+
 </resources>

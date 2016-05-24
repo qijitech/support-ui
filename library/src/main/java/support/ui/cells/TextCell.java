@@ -12,6 +12,7 @@ import android.widget.TextView;
 import support.ui.R;
 import support.ui.utilities.AndroidUtilities;
 import support.ui.utilities.LayoutHelper;
+import support.ui.utilities.ViewUtils;
 
 /**
  * Created by YuGang Yang on 04 07, 2016.
@@ -81,6 +82,8 @@ public class TextCell extends FrameLayout {
   public void bindView(CellModel cellModel) {
     if (cellModel.backgroundResource != 0) {
       setBackgroundResource(cellModel.backgroundResource);
+    } else {
+      setBackgroundResource(R.drawable.list_selector_white);
     }
     if (!TextUtils.isEmpty(cellModel.text)) {
       textView.setText(cellModel.text);

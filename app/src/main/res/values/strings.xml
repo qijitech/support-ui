@@ -43,5 +43,9 @@
   <string name="ykx_phone_other">帮他人叫</string>
   <string name="ykx_thanks">感谢费</string>
   <string name="ykx_trips">感谢费和行程偏好</string>
+  <string name="ykx_confirm">去订车</string>
+  <string name="ykx_car_a">舒适车</string>
+  <string name="ykx_car_b">商务车</string>
+  <string name="ykx_car_c">豪华车</string>
 
 </resources>

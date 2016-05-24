@@ -30,7 +30,9 @@
 
     <activity
         android:name=".YKXActivity"
-        android:label="@string/label_ykx">
+        android:label="@string/label_ykx"
+        android:theme="@style/AppTheme.YKX"
+        >
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
           android:value=".MainActivity"/>
