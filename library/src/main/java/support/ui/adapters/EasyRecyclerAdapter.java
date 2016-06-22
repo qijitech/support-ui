@@ -91,8 +91,12 @@ public class EasyRecyclerAdapter extends RecyclerView.Adapter<EasyViewHolder> {
     if (objects == null) {
       throw new IllegalArgumentException("objects can not be null");
     }
-    dataList.addAll(objects);
-    notifyDataSetChanged();
+    int prevSize = this.dataList.size();
+    List<Object> data = new ArrayList<>(prevSize + dataList.size());
+    data.addAll(dataList);
+    data.addAll(objects);
+    dataList = data;
+    notifyItemRangeInserted(prevSize, dataList.size());
   }
 
   public boolean update(Object data, int position) {
