@@ -96,7 +96,7 @@ public class EasyRecyclerAdapter extends RecyclerView.Adapter<EasyViewHolder> {
     data.addAll(dataList);
     data.addAll(objects);
     dataList = data;
-    notifyItemRangeInserted(prevSize, dataList.size());
+    notifyItemRangeInserted(prevSize, objects.size());
   }
 
   public boolean update(Object data, int position) {
